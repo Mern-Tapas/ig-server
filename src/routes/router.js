@@ -1,0 +1,26 @@
+const express = require("express")
+const router = express.Router()
+const leadmodel = require("../schema/models")
+
+
+router.get('', (req, res) => {
+    console.log("runing")
+})
+
+router.post("",async(req,res)=>{
+    const { service, loantype, vehical, year, currentbank, name, contact } = req.body
+    const data = new leadmodel({ service, loantype, vehical, year, currentbank, name, contact })
+
+    try {
+
+        const response = await data.save()
+        console.log(response)
+        
+    } catch (error) {
+        
+    }
+
+})
+
+
+module.exports = router
