@@ -4,7 +4,7 @@ const leadmodel = require("../schema/models")
 
 
 router.get('', (req, res) => {
-    console.log("runing")
+    res.send("home")
 })
 
 router.post("",async(req,res)=>{
