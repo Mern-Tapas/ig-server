@@ -2,6 +2,7 @@ const express = require("express")
 const dashboard = express.Router()
 const leadsmodel = require("../../schema/models")
 const deletelead = require("../AdminRoutes/deletelead")
+const leads = require("./leads")
 
 
 dashboard.get('', async (req, res) => {
@@ -23,6 +24,8 @@ dashboard.delete("/:id", async (req, res) => {
 
     }
 })
+
+dashboard.use("/leads",leads)
 
 
 
