@@ -1,7 +1,6 @@
 const express = require("express")
 const dashboard = express.Router()
 const leadsmodel = require("../../schema/models")
-const deletelead = require("../AdminRoutes/deletelead")
 const leads = require("./leads")
 
 
