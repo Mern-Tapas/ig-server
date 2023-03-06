@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const leadmodel = require("../schema/models")
 const dashboard = require("./AdminRoutes/dashboard")
+const login = require("./clientRoutes/login")
 
 
 router.get('', (req, res) => {
@@ -25,6 +26,7 @@ router.post("", async (req, res) => {
 
 
 router.use("/dashboard", dashboard)
+router.use("/login", login)
 
 
 module.exports = router
