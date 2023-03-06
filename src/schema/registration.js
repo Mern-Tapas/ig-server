@@ -8,10 +8,17 @@ const registrationSchema = new mongoose.Schema(
         password: String,
         cpassword: String,
         type: String,
+        toknes: [{
+            token: { type: String, required: true }
+        }]
 
     }
 )
 
+
+registrationSchema.methods.genToken = function (next) {
+
+}
 const usermodel = mongoose.model("user", registrationSchema)
 
 module.exports = usermodel
