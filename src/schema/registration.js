@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const jwt = require("jsonwebtoken")
 
 const registrationSchema = new mongoose.Schema(
     {
@@ -8,7 +9,7 @@ const registrationSchema = new mongoose.Schema(
         password: String,
         cpassword: String,
         type: String,
-        toknes: [{
+        tokens: [{
             token: { type: String, required: true }
         }]
 
@@ -16,7 +17,15 @@ const registrationSchema = new mongoose.Schema(
 )
 
 
-registrationSchema.methods.genToken = function (next) {
+registrationSchema.methods.genToken = async function (next) {
+
+    const token = jwt.sign({ _id: this._id.toString() }, 'thesecratekeyforjwt')
+
+    this.tokens = this.tokens.concat({ token })
+    await this.save()
+
+    return token    
+
 
 }
 const usermodel = mongoose.model("user", registrationSchema)
