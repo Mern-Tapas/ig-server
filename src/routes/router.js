@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const leadmodel = require("../schema/models")
 const dashboard = require("./AdminRoutes/dashboard")
+const clientauth = require("./clientRoutes/clientauth")
 const login = require("./clientRoutes/login")
 const signup = require("./clientRoutes/singup")
 
@@ -26,7 +27,7 @@ router.post("", async (req, res) => {
 })
 
 
-router.use("/dashboard", dashboard)
+router.use("/dashboard",clientauth, dashboard)
 router.use("/login", login)
 router.use("/signup", signup)
 
