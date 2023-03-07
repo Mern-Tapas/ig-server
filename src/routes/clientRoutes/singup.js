@@ -15,6 +15,7 @@ signup.post('', async (req, res) => {
         const user = new usermodel({ name, contact, email, password, cpassword, })
         const result = await user.save()
         const token = await user.genToken()
+        console.log(token)
         res.cookie("jwt",token)
         res.send({ massage: "login sucessfull", validation: true })
 
