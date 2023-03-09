@@ -1,8 +1,17 @@
+const jwt = require("jsonwebtoken")
+const usermodel = require('../../schema/registration')
 
-const clientauth = (req,res,next)=>{
-    const token = req.cookies.jwt
-    console.log(token)
-    console.log("token")
+const clientauth = async (req, res, next) => {
+    try {
+        const token = req.headers["x-access-token"]
+        const id = jwt.verify(token, "thesecratekeyforjwt")
+        res.json({ validation: true })
+        console.log(id)
+        next()
+    } catch (error) {
+        console.log(`auto route function error = ${error}`)
+        res.json({ validation: false })
+    }
 }
 
 module.exports = clientauth

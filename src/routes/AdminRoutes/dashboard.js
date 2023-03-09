@@ -7,7 +7,7 @@ const leads = require("./leads")
 dashboard.get('', async (req, res) => {
     try {
         const data = await leadsmodel.find().sort({ _id: -1 }).limit(10)
-        res.send({ massage: "welcome to IG Server", data: data })
+        res.send({ massage: "welcome to IG Server", data: data , validation:true})
 
     } catch (error) {
         console.log(`dashboard-js error found ${error}`)
