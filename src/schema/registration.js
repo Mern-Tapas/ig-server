@@ -5,7 +5,7 @@ const registrationSchema = new mongoose.Schema(
     {
         name: String,
         contact: Number,
-        email: String,
+        email: {unique:true , type:String},
         password: String,
         cpassword: String,
         type: String,
