@@ -5,8 +5,10 @@ const clientauth = async (req, res, next) => {
     try {
         const token = req.headers["x-access-token"]
         const id = jwt.verify(token, "thesecratekeyforjwt")
-        console.log(id)
+        const user = await usermodel.findById(id)
+        req.user = user
 
+        next()
     } catch (error) {
         console.log(`auto route function error = ${error}`)
         res.json({ validation: false })

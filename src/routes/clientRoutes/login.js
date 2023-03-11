@@ -14,9 +14,8 @@ login.post('', async (req, res) => {
 
         const user = await usermodel.findOne({ email })
         const token = await user.genToken()
-        console.log(token)
         if (user.password == password) {
-            res.json({ validation: true , token:token})
+            res.json({ validation: true, token: token })
         }
 
 
