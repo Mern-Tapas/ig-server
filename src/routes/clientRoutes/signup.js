@@ -6,7 +6,6 @@ const usermodel = require("../../schema/registration")
 
 
 signup.get('', (req, res) => {
-    res.cookie("name", "data")
 })
 
 signup.post('', async (req, res) => {
@@ -16,7 +15,7 @@ signup.post('', async (req, res) => {
         const user = new usermodel({ name, contact, email, password, cpassword, })
         const result = await user.save()
         const token = await user.genToken()
-        res.json({validation:true, token})
+        res.json({ validation: true, token })
         console.log(token)
 
     } catch (error) {

@@ -16,6 +16,8 @@ login.post('', async (req, res) => {
         const token = await user.genToken()
         if (user.password == password) {
             res.json({ validation: true, token: token })
+        }else{
+            res.json({validation:false ,massage:"something went wrong"})
         }
 
 
